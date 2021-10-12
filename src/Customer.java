@@ -16,7 +16,6 @@ public class Customer {
 
     public void addCustomer(){
 
-
     }
 
     public void updateCustomer(){
