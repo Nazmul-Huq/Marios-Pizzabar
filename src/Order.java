@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.Date;
 
+/*
+ *this class written by Nazmul
+ */
 public class Order {
-    /*
-    *this class written by Nazmul
-     */
 
     private int id;
     private int customerId;
