@@ -21,7 +21,7 @@ public class Customer {
 
     public void updateCustomer(){
 
-        //maybe where automatically updates
+        //maybe automatically updates
     }
 
     public void deleteCustomer(){

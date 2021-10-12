@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Menu {
 
     private int id;
@@ -10,6 +12,16 @@ public class Menu {
         this.name = name;
         this.price = price;
         this.ingredients = ingredients;
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", ingredients=" + Arrays.toString(ingredients) +
+                '}';
     }
 
     public void addMenu(){
