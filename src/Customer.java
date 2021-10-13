@@ -18,7 +18,8 @@ public class Customer {
 
     public int getId() {
 
-        for (int i = 0; i < Database.customerRecords.indexOf(id); i++) {
+        for (int i = 0; i < Database.customerRecords.indexOf(i); i++) {
+
 
 
         }
@@ -28,7 +29,7 @@ public class Customer {
 
     public void addNewCustomer(Customer newCustomer){
 
-        Database.customerRecords.add(newCustomer);
+        Database.customerRecords.add(null);
 
     }
 
@@ -41,7 +42,7 @@ public class Customer {
 
     public void deleteCustomer(Customer deleteCustomer){
 
-        Database.customerRecords.remove(deleteCustomer);
+        Database.customerRecords.remove(null);
     }
 
 
