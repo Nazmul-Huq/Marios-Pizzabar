@@ -24,7 +24,8 @@ public class Menu {
                 '}';
     }
 
-    public void addMenu(Menu newMenu){
+    public void addNewMenu(Menu newMenu){
+
 
         Database.menuDetail.add(newMenu);
 

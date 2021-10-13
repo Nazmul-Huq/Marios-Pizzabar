@@ -1,3 +1,5 @@
+import javax.swing.plaf.basic.BasicListUI;
+
 public class Customer {
 
     private int id;
@@ -14,18 +16,32 @@ public class Customer {
         this.email = email;
     }
 
-    public void addCustomer(){
+    public int getId() {
+
+        for (int i = 0; i < Database.customerRecords.indexOf(id); i++) {
+
+
+        }
+        return id;
+
+    }
+
+    public void addNewCustomer(Customer newCustomer){
+
+        Database.customerRecords.add(newCustomer);
 
     }
 
     public void updateCustomer(){
 
-        //maybe automatically updates
+        for (int i = 0; i < Database.customerRecords.size(); i++) {
+            System.out.println();
+        }
     }
 
-    public void deleteCustomer(){
+    public void deleteCustomer(Customer deleteCustomer){
 
-        //Could I write something that deletes the customers detail after an action
+        Database.customerRecords.remove(deleteCustomer);
     }
 
 
