@@ -26,13 +26,11 @@ public class Menu {
 
     public void addNewMenu(Menu newMenu){
 
-
         Database.menuDetail.add(newMenu);
 
     }
 
     public void updateMenu(){
-
 
 
     }
