@@ -34,6 +34,16 @@ public class Customer {
         return this.id;
     }
 
+    public String getName(){
+
+        return this.name;
+    }
+
+    public String getAddress(){
+
+        return this.address;
+    }
+
     public int getPhoneNumber(){
 
         return this.phoneNumber;
@@ -49,6 +59,7 @@ public class Customer {
     String customerAddresses = "";
     int customerPhoneNumbers = 0;
     String customerEmails = "";
+
 
     public static void addNewCustomer() {
         Scanner scanner = new Scanner(System.in);
@@ -85,23 +96,62 @@ public class Customer {
 
 
 
-    public static void updateCustomerViaPhoneNumber(int phoneNumber){
+    public static void updateCustomer(){
 
-        int customerToUpdateViaPhoneNumber = 0;
-        for (int i = 0; i < Database.customerRecords.size(); i++) {
-            Customer updateCustomer = Database.customerRecords.get(i);
-            int findCustomersPhoneNumber = updateCustomer.getPhoneNumber();
-            if (findCustomersPhoneNumber == phoneNumber){
-                customerToUpdateViaPhoneNumber = updateCustomer.getId();
-                System.out.println("Under construction");
+        System.out.println("Would you like to update a customer information? Please write 'yes'");
+        String updateCustomerOrNot = scanner.nextLine();
+        if (updateCustomerOrNot.equals("yes")){
+            System.out.println("Which customer would you like to update information from?");
+            int customerIds = Integer.parseInt(scanner.nextLine());
 
+            for (int i = 0; i < Database.customerRecords.size(); i++) {
+                Customer customerToUpdate = Database.customerRecords.get(i);
+                int findCustomerId = customerToUpdate.getId();
+
+
+                if (findCustomerId == customerIds){
+
+                    int findCustomerIndex = i;
+                    String findCustomerName = customerToUpdate.getName();
+                    String findCustomerAddress = customerToUpdate.getAddress();
+                    int findCustomerPhoneNumber = customerToUpdate.getPhoneNumber();
+                    String findCustomerEmail = customerToUpdate.getEmail();
+
+                    System.out.println(customerToUpdate.getId());
+                    System.out.println(customerToUpdate.getName());
+                    System.out.println(customerToUpdate.getAddress());
+                    System.out.println(customerToUpdate.getPhoneNumber());
+                    System.out.println(customerToUpdate.getEmail());
+
+                    System.out.println("What information would you like to change?");
+                    System.out.println(" 1. Name \n 2. Address \n 3. Phone number \n 4. Email");
+                    int thingsToChange = Integer.parseInt(scanner.nextLine());
+                    if(thingsToChange == 1){
+                        System.out.println("What would you like to change the name to?");
+                        findCustomerName = scanner.nextLine();
+                    } else if(thingsToChange == 2){
+                        System.out.println("What would you like to change the address to?");
+                        findCustomerAddress = scanner.nextLine();
+                    } else if(thingsToChange == 3){
+                        System.out.println("What would you like to change the phone number to?");
+                        findCustomerPhoneNumber = Integer.parseInt(scanner.nextLine());
+                    } else if(thingsToChange == 4){
+                        System.out.println("What would you like to change the email to?");
+                        findCustomerEmail = scanner.nextLine();
+                    }
+
+                    Customer updatedCustomer = new Customer(findCustomerId, findCustomerName,findCustomerAddress,findCustomerPhoneNumber,findCustomerEmail);
+
+                    Database.customerRecords.set(i, updatedCustomer);
+                    System.out.println("The " + updatedCustomer + " has now been changed");
+                }
             }
         }
     }
 
     public static void deleteCustomer(){
 
-        System.out.println("Would you like to delete a customers infomation?");
+        System.out.println("Would you like to delete a customers infomation? If yes, please write 'yes'");
         String deleteCustomerOrNot = scanner.nextLine();
         if(deleteCustomerOrNot.equals("yes")){
             System.out.println("Which customer would you like to delete, find the customer phone number");

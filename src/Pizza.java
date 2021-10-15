@@ -78,7 +78,7 @@ public class Pizza {
 
     public static void deletePizza() {
 
-        System.out.println("Which pizza would you like to delete from the menu cart?");
+        System.out.println("Which pizza would you like to delete from the menu cart? If yes, please write 'yes'");
         int pizzaIdToDelete = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < Database.pizzaDetail.size(); i++) {
             Pizza newPizza = Database.pizzaDetail.get(i);
