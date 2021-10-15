@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//Class written by Søs
 public class Customer {
     static Scanner scanner = new Scanner(System.in);
 
