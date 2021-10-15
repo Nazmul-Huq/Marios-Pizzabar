@@ -93,7 +93,7 @@ public class Customer {
         Customer newCustomer = new Customer(customerId, customerName, customerAddress, customerPhoneNumber, customerEmail);
         Database.customerRecords.add(newCustomer);
 
-        }
+    }
 
 
 
@@ -166,8 +166,9 @@ public class Customer {
 
                     Database.customerRecords.remove(customerPhoneNumber);
                 }
-                System.out.println(customerPhoneNumber + " has now been delete from your database");
+
             }
+            System.out.println(customerPhoneNumber + " has now been delete from your database");
 
         }
     }

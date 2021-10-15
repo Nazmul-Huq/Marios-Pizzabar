@@ -127,8 +127,8 @@ public class MariosPizzabar {
 
 
     /*
-    * written by Nazmul
-    * method to delete an order from marios order list
+     * written by Nazmul
+     * method to delete an order from marios order list
      */
     public static void deleteOrder(){
         System.out.println("Please enter order id to delete");
@@ -137,11 +137,11 @@ public class MariosPizzabar {
         Database.orderRecord.remove(indexOfGivenOrderId);
         printOrderListForMario(); // we print the updated list for mario after deletion
 
-        }
+    }
 
     /*
-    * written by Namul
-    * get the index number of given order id
+     * written by Namul
+     * get the index number of given order id
      */
     public static int getIndexFromOrderId(int orderId){
         int indexOfGivenOrderId = -1;
@@ -439,27 +439,7 @@ public class MariosPizzabar {
         Order newOrder3 = new Order(3, 3, pizzaIds3,   pizzaNames3, pizzaPrices3, orderDate3, finalPrice3, deliverTime3);
         newOrder3.addOrder(newOrder3);
 
-        // create and add an order manually
-        ArrayList<Integer> pizzaIds4 = new ArrayList<>();
-        pizzaIds3.add(1);
-        pizzaIds3.add(4);
 
-        ArrayList<String> pizzaNames4 = new ArrayList<>();
-        pizzaNames3.add("pizza 3");
-        pizzaNames3.add("pizza 4");
-
-        ArrayList<Double> pizzaPrices4 = new ArrayList<>();
-        pizzaPrices3.add(1.0);
-        pizzaPrices3.add(2.0);
-
-        double finalPrice4 = 60.00;
-
-
-        Date orderDate4 = new Date();
-        LocalTime deliverTime4 = LocalTime.now();
-
-        Order newOrder4 = new Order(4, 4, pizzaIds4,   pizzaNames4, pizzaPrices4, orderDate4, finalPrice4, deliverTime4);
-        newOrder4.addOrder(newOrder4);
     }
 
 }
