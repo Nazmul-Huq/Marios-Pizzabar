@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 //Class written by Søs
 public class Pizza {
@@ -61,7 +62,7 @@ public class Pizza {
         System.out.println("And what should the price be?");
         int pizzaPrice = Integer.parseInt(scanner.nextLine());
 
-        System.out.println("Do you want to save " + pizzaName + " to the database of pizzas? Type 'yes'");
+        System.out.println("Do you want to save " + pizzaName + " to the database of pizzas?");
         String savePizzaOrNot = scanner.nextLine();
         if (savePizzaOrNot.equals("yes")) {
             System.out.println("Your have now saved " + pizzaName + " to the database");
@@ -86,8 +87,8 @@ public class Pizza {
                 Database.pizzaDetail.remove(pizzaIdToDelete);
 
             }
+            System.out.println("Pizza " + pizzaIdToDelete + " has now been delete from your database");
         }
-        System.out.println("Pizza " + pizzaIdToDelete + " has now been delete from your database");
     }
 }
 
