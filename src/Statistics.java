@@ -20,7 +20,7 @@ public class Statistics
             for (int j = 0; j < pizzaIDs.size(); j++)
             {
                 // Getting each individual pizzaIDs and update it in the mostPizzaSales int array
-                int pizzaNumber = pizzaIDs.get(i);
+                int pizzaNumber = pizzaIDs.get(j);
 
 
                 // Checking the amount of pizzas and update that element in the integer array
@@ -49,51 +49,51 @@ public class Statistics
             }
         }
 
-            // Looping through the pizzas and find the most selling pizza's number
-            int mostSellingPizzaAmount = 0;
-            for (int k = 0; k < mostPizzaSales.length; k++)
+        // Looping through the pizzas and find the most selling pizza's number
+        int mostSellingPizzaAmount = 0;
+        for (int k = 0; k < mostPizzaSales.length; k++)
+        {
+            if (mostPizzaSales[k] > mostSellingPizzaAmount)
             {
-                if (mostPizzaSales[k] > mostSellingPizzaAmount)
-                {
-                    mostSellingPizzaAmount = mostPizzaSales[k];
-                }
+                mostSellingPizzaAmount = mostPizzaSales[k];
             }
+        }
 
-            // Looping through the pizzas and find most selling pizza's index
-            int pizzaSellingValueIndex = -1;
-            for (int l = 0; l < mostPizzaSales.length; l++)
+        // Looping through the pizzas and find most selling pizza's index
+        int pizzaSellingValueIndex = -1;
+        for (int l = 0; l < mostPizzaSales.length; l++)
+        {
+            int individualPiaazSale = mostPizzaSales[l];
+
+            if (individualPiaazSale == mostSellingPizzaAmount)
             {
-                int individualPiaazSale = mostPizzaSales[l];
-
-                if (individualPiaazSale == mostSellingPizzaAmount)
-                {
-                    pizzaSellingValueIndex = l;
-                    break;
-                }
+                pizzaSellingValueIndex = l;
+                break;
             }
+        }
 
-                switch (pizzaSellingValueIndex)
-                {
-                    case 0:
-                        System.out.println("Most selling pizza is Margarita, unit sold: " + mostSellingPizzaAmount);
-                        break;
+        switch (pizzaSellingValueIndex)
+        {
+            case 0:
+                System.out.println("Most selling pizza is Margarita, unit sold: " + mostSellingPizzaAmount);
+                break;
 
-                    case 1:
-                        System.out.println("Most selling pizza is Hawaii, unit sold:  " + mostSellingPizzaAmount);
-                        break;
+            case 1:
+                System.out.println("Most selling pizza is Hawaii, unit sold:  " + mostSellingPizzaAmount);
+                break;
 
-                    case 2:
-                        System.out.println("Most selling pizza is Pepperoni, unit sold:  " + mostSellingPizzaAmount);
-                        break;
+            case 2:
+                System.out.println("Most selling pizza is Pepperoni, unit sold:  " + mostSellingPizzaAmount);
+                break;
 
-                    case 3:
-                        System.out.println("most selling pizza is Spicy Pizza, unit sold: " + mostSellingPizzaAmount);
-                        break;
+            case 3:
+                System.out.println("most selling pizza is Spicy Pizza, unit sold: " + mostSellingPizzaAmount);
+                break;
 
-                    case 4:
-                        System.out.println("most selling pizza is Tuna Pizza, unit sold: " + mostSellingPizzaAmount);
-                        break;
-                }
+            case 4:
+                System.out.println("most selling pizza is Tuna Pizza, unit sold: " + mostSellingPizzaAmount);
+                break;
+        }
 
 
 
@@ -149,57 +149,57 @@ public class Statistics
         }
 
 
-            // Looping through the pizzas and find the least selling pizza's number
-            int leastSellingPizza = 0;
-            for (int k = 0; k < leastPizzaSales.length; k++)
+        // Looping through the pizzas and find the least selling pizza's number
+        int leastSellingPizza = 0;
+        for (int k = 0; k < leastPizzaSales.length; k++)
+        {
+            if (leastPizzaSales[k] < leastSellingPizza)
             {
-                if (leastPizzaSales[k] < leastSellingPizza)
-                {
-                    leastSellingPizza = leastPizzaSales[k];
-                }
+                leastSellingPizza = leastPizzaSales[k];
             }
+        }
 
 
-            // Looping through the pizzas and find least selling pizza's index
+        // Looping through the pizzas and find least selling pizza's index
 
-            int pizzaSellingValueIndex = -1;
+        int pizzaSellingValueIndex = -1;
 
-            for (int l = 0; l < leastPizzaSales.length; l++)
+        for (int l = 0; l < leastPizzaSales.length; l++)
+        {
+            int pizzaSellingValue = leastPizzaSales[l];
+
+            if (pizzaSellingValue == leastSellingPizza)
             {
-                int pizzaSellingValue = leastPizzaSales[l];
-
-                if (pizzaSellingValue == leastSellingPizza)
-                {
-                    pizzaSellingValueIndex = l;
-                }
+                pizzaSellingValueIndex = l;
             }
+        }
 
-                switch (pizzaSellingValueIndex)
-                {
-                    case 0:
-                        System.out.println("Least selling pizza is Chicken Pizza, sell unit: " + leastSellingPizza);
-                        break;
+        switch (pizzaSellingValueIndex)
+        {
+            case 0:
+                System.out.println("Least selling pizza is Chicken Pizza, sell unit: " + leastSellingPizza);
+                break;
 
-                    case 1:
-                        System.out.println("Least selling pizza is Egg Pizza, sell unit: " + leastSellingPizza);
-                        break;
+            case 1:
+                System.out.println("Least selling pizza is Egg Pizza, sell unit: " + leastSellingPizza);
+                break;
 
-                    case 2:
-                        System.out.println("Least selling pizza is Ham Pizza, sell unit: " + leastSellingPizza);
-                        break;
+            case 2:
+                System.out.println("Least selling pizza is Ham Pizza, sell unit: " + leastSellingPizza);
+                break;
 
-                    case 3:
-                        System.out.println("Least selling pizza is Bacon Pizza, sell unit: " + leastSellingPizza);
-                        break;
+            case 3:
+                System.out.println("Least selling pizza is Bacon Pizza, sell unit: " + leastSellingPizza);
+                break;
 
-                    case 4:
-                        System.out.println("Least selling pizza is Beef Pizza, sell unit: " + leastSellingPizza);
-                        break;
-                }
+            case 4:
+                System.out.println("Least selling pizza is Beef Pizza, sell unit: " + leastSellingPizza);
+                break;
+        }
 
 
 
-            // Remember to make it break automatically, if 5 pizzas are selected
+        // Remember to make it break automatically, if 5 pizzas are selected
 
     }
 }
