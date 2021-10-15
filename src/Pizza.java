@@ -2,18 +2,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Pizza {
-    Scanner scanner = new Scanner(System.in);
+    //Class written by Søs
+
+    static Scanner scanner = new Scanner(System.in);
 
     private int pizzaId;
     private String pizzaName;
     private int pizzaPrice;
-    private String pizzaIngredients;
+    private String pizzaIngredient;
 
-    public Pizza(int pizzaId, String pizzaName, int pizzaPrice, String pizzaIngredients) {
+    public Pizza(int pizzaId, String pizzaName, int pizzaPrice, String pizzaIngredient) {
         this.pizzaId = pizzaId;
         this.pizzaName = pizzaName;
         this.pizzaPrice = pizzaPrice;
-        this.pizzaIngredients = pizzaIngredients;
+        this.pizzaIngredient = pizzaIngredient;
     }
 
     @Override
@@ -26,69 +28,73 @@ public class Pizza {
                 '}';
     }
 
-    public int getPizzaId(){
+    public int getPizzaId() {
 
         return this.pizzaId;
     }
 
-    public String getPizzaName(){
+    public String getPizzaName() {
 
         return this.pizzaName;
     }
 
-    public double getPizzaPrice(){
+    public double getPizzaPrice() {
 
         return this.pizzaPrice;
     }
 
-
-    public void addNewPizza(Pizza newPizza){
-
-        ArrayList<Integer> pizzaIds = new ArrayList<>();
-        ArrayList<String> pizzaNames = new ArrayList<>();
-        ArrayList<String> pizzaIngredients = new ArrayList<>();
-        ArrayList<Integer> pizzaPrices = new ArrayList<>();
-
-        while (true){
-            System.out.println("What's the name of the pizza?");
-            String pizzaName = scanner.nextLine();
-            pizzaNames.add(pizzaName);
-
-            System.out.println("What is the ingredients in " + pizzaName + " ?");
-            String pizzaIngredient = scanner.nextLine();
-            pizzaIngredients.add(pizzaIngredient);
-
-            System.out.println("And what should the price be?");
-            int pizzaPrice = scanner.nextInt();
-            pizzaPrices.add(pizzaPrice);
+    int pizzaIds = 0;
+    String pizzaNames = "";
+    String pizzaIngredients = "";
+    int pizzaPrices = 0;
 
 
-    }
+    public static void addNewPizza() {
 
-    public void updatePizza(){
+        System.out.println("Please give your new pizza a number");
+        int pizzaId = Integer.parseInt(scanner.nextLine());
 
-        int pizzaToUpdate = 0;
-        for (int i = 0; i < Database.pizzaDetail.size(); i++) {
+        System.out.println("What's the name of the pizza?");
+        String pizzaName = scanner.nextLine();
+
+        System.out.println("What is the ingredients in " + pizzaName + " ?");
+        String pizzaIngredient = scanner.nextLine();
+
+        System.out.println("And what should the price be?");
+        int pizzaPrice = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Do you want to save " + pizzaName + " to the database of pizzas?");
+        String savePizzaOrNot = scanner.nextLine();
+        if (savePizzaOrNot.equals("yes")) {
+            System.out.println("Your have now saved " + pizzaName + " to the database");
+        } else {
 
         }
+
+        Pizza newPizza = new Pizza(pizzaId, pizzaName, pizzaPrice, pizzaIngredient);
+        Database.pizzaDetail.add(newPizza);
+
     }
 
-    public void deletePizza(){
+    public static void deletePizza() {
 
-    }
+        System.out.println("Which pizza would you like to delete from the menu cart?");
+        int pizzaIdToDelete = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < Database.pizzaDetail.size(); i++) {
+            Pizza newPizza = Database.pizzaDetail.get(i);
+            int pizzaIds = newPizza.getPizzaId() + 1;
+            if (pizzaIds == pizzaIdToDelete) {
 
-    public void printPizzaDetails(){
+                Database.pizzaDetail.remove(pizzaIdToDelete);
 
-        System.out.println("Pizza id: " + this.pizzaId);
-        System.out.println("Pizza name: " + this.pizzaName);
-        System.out.println("Pizza price: " + this.pizzaPrice);
-        System.out.println("Pizza ingredients: " + this.pizzaIngredients);
+            }
+            System.out.println("Pizza " + pizzaIdToDelete + " has now been delete from your database");
+        }
     }
 }
-//Menu menu = new Menu(1, "Hawaii",56.5, "cheese, tomatosause, ham, pineapple");
-//         Menu menu1 = new Menu(2, "Serano", 61,"chesse, tomatosauce, real ham");
-//
-//         menu.addMenu(menu);
-//         menu.addMenu(menu1);
-//
-//        System.out.println(Database.menuDetail);
+
+//Test pizza class
+//Pizza margherita = new Pizza(1, "Margherita", 72, "Tomato, Cheese");
+//Pizza hawaii = new Pizza(2,"Hawaii", 75, "Tomato, Cheese, Ham, Pineapple");
+//Pizza pepperoni = new Pizza(3, "Pepperoni", 75, "Tomato, Cheese, Pepperoni");
+//Pizza spicy = new Pizza(4,"Spicy", 78,"Tomato, Cheese, Beef, Jalapeño, Crushed Chilli");

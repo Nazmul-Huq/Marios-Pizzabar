@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Customer {
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     private int id;
     private String name;
@@ -44,37 +44,46 @@ public class Customer {
         return this.email;
     }
 
-    public void addNewCustomer(Customer newCustomer) {
+    int customerIds = 0;
+    String customerNames = "";
+    String customerAddresses = "";
+    int customerPhoneNumbers = 0;
+    String customerEmails = "";
 
-        ArrayList<Integer> customerIds = new ArrayList<>();
-        ArrayList<String> customerNames = new ArrayList<>();
-        ArrayList<String> customerAddresses = new ArrayList<>();
-        ArrayList<Integer> customerPhoneNumbers = new ArrayList<>();
-        ArrayList<String> customerEmails = new ArrayList<>();
+    public static void addNewCustomer() {
+        Scanner scanner = new Scanner(System.in);
 
-        while (true) {
-            System.out.println("Please enter your name ");
-            String customerName = scanner.nextLine();
-            customerNames.add(customerName);
+        System.out.println("Please input a customer ID ");
+        int customerId = Integer.parseInt(scanner.nextLine());
 
-            System.out.println("now please enter your address, phone number and email-address ");
-            String customerAddress = scanner.nextLine();
-            customerAddresses.add(customerAddress);
-            int customerPhoneNumber = scanner.nextInt();
-            customerPhoneNumbers.add(customerPhoneNumber);
-            String customerEmail = scanner.nextLine();
-            customerEmails.add(customerEmail);
+        System.out.println("Please enter your name ");
+        String customerName = scanner.nextLine();
 
-            System.out.println("Is you details correct?");
-            System.out.println("Name: " + customerName);
-            System.out.println("Address: " + customerAddress);
-            System.out.println("Phone number: " + customerPhoneNumber);
-            System.out.println("Email: " + customerEmail);
-            System.out.println();
-            break;
+        System.out.println("now please enter your address, phone number and email-address ");
+        String customerAddress = scanner.nextLine();
+        int customerPhoneNumber = Integer.parseInt(scanner.nextLine());
+        String customerEmail = scanner.nextLine();
+
+
+        System.out.println("Is you details correct?");
+        System.out.println("Name: " + customerName);
+        System.out.println("Address: " + customerAddress);
+        System.out.println("Phone number: " + customerPhoneNumber);
+        System.out.println("Email: " + customerEmail);
+        System.out.println("Please write 'yes' if your details i correct, or 'no' if your details is incorrect");
+        String correctOrNot = scanner.nextLine();
+        if (correctOrNot.equals("yes")){
+            System.out.println("Your details have been saved!");
+        } else {
+
         }
 
-    }
+        Customer newCustomer = new Customer(customerId, customerName, customerAddress, customerPhoneNumber, customerEmail);
+        Database.customerRecords.add(newCustomer);
+
+        }
+
+
 
     public static void updateCustomerViaPhoneNumber(int phoneNumber){
 
@@ -84,29 +93,36 @@ public class Customer {
             int findCustomersPhoneNumber = updateCustomer.getPhoneNumber();
             if (findCustomersPhoneNumber == phoneNumber){
                 customerToUpdateViaPhoneNumber = updateCustomer.getId();
+                System.out.println("Under construction");
 
             }
         }
     }
 
-    public void deleteCustomer(Customer deleteCustomer){
+    public static void deleteCustomer(){
 
-        int customerToDelete = 0;
-        for (int i = 0; i < Database.customerRecords.size(); i++) {
-            Customer findCustomerToRemove = Database.customerRecords.remove(i);
+        System.out.println("Would you like to delete a customers infomation?");
+        String deleteCustomerOrNot = scanner.nextLine();
+        if(deleteCustomerOrNot.equals("yes")){
+            System.out.println("Which customer would you like to delete, find the customer phone number");
+            int customerPhoneNumber = Integer.parseInt(scanner.nextLine());
+
+            for (int i = 0; i < Database.customerRecords.size(); i++) {
+                Customer newCustomer = Database.customerRecords.get(i);
+                int customerId = newCustomer.getPhoneNumber()+1;
+
+                if (customerId == customerPhoneNumber){
+
+                    Database.customerRecords.remove(customerPhoneNumber);
+                }
+                System.out.println(customerPhoneNumber + " has now been delete from your database");
+            }
 
         }
     }
 }
 ////Test Customer Class//
-//        Customer peter = new Customer(1,"Peter","København", 22443380,"petermail");
-//        Customer kevin = new Customer(2,"kevin","København", 22334480,"kevinmail");
-//        Customer henrietta = new Customer(3,"Henrietta","København", 80443322,"henriettarmail");
-//        Customer paula = new Customer(4,"Paula","København", 80334422,"paulamail");
-//
-//        //Test Pizza class//
-//        Pizza pizza1 = new Pizza(1, "Hawaii",56, "cheese, tomatosause, ham, pineapple");
-//        Pizza pizza2 = new Pizza(2, "Serano", 61,"chesse, tomatosauce, real ham");
-//
-//         pizza2.printPizzaDetails();
-//         pizza1.printPizzaDetails();
+//        Customer søs = new Customer(1,"Søs Kjergaard","Sportsvej 60, Lejl. 233, Glostrup", 22443380,"slys87@gmail.com");
+//        Customer kevin = new Customer(2,"Kevin Johansen","Guldbergsgade 23, København N", 23874590,"kevin.j@gmail.com");
+//        Customer henrietta = new Customer(3,"Henrietta Olsen","Sølvergade 65, Valby", 80443322,"henriettaIsNice@gmail.com");
+//        Customer mohammed = new Customer(4,"Mohammed Said","Jacobsvej 8, København S", 75449259,"Mo.verdensmester@gmail.com");
