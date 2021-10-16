@@ -6,6 +6,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import java.util.Scanner;
+
 public class MariosPizzabar {
 
     static Scanner scanner = new Scanner(System.in);
@@ -191,7 +193,9 @@ public class MariosPizzabar {
         if (customerId == 0) { // customer could not be found in the database
             System.out.println("Customer do not exist. Please create a new customer");
             // ask to make new customer
-            // ************* call the method given by Søs to create a new customer
+
+            //Method called from the Customer class written by Søs
+            Customer.addNewCustomer();
         }
 
         // Finally make the new order and add to the database

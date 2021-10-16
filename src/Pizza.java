@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+
 //Class written by Søs
 public class Pizza {
 
@@ -47,7 +48,7 @@ public class Pizza {
     String pizzaIngredients = "";
     int pizzaPrices = 0;
 
-
+    //Method to add a new pizza via a scanner
     public static void addNewPizza() {
 
         System.out.println("Please give your new pizza a number");
@@ -70,11 +71,12 @@ public class Pizza {
 
         }
 
+        //Storing pizza in the database class
         Pizza newPizza = new Pizza(pizzaId, pizzaName, pizzaPrice, pizzaIngredient);
         Database.pizzaDetail.add(newPizza);
 
     }
-
+    //Method to delete a pizza from the database class
     public static void deletePizza() {
 
         System.out.println("Which pizza would you like to delete from the menu cart?"
@@ -85,17 +87,10 @@ public class Pizza {
             int pizzaIds = newPizza.getPizzaId() + 1;
             if (pizzaIds == pizzaIdToDelete) {
 
+                //Removing a pizza from the database
                 Database.pizzaDetail.remove(pizzaIdToDelete);
-
             }
-
         }
         System.out.println("Pizza " + pizzaIdToDelete + " has now been delete from your database");
     }
 }
-
-//Test pizza class
-//Pizza margherita = new Pizza(1, "Margherita", 72, "Tomato, Cheese");
-//Pizza hawaii = new Pizza(2,"Hawaii", 75, "Tomato, Cheese, Ham, Pineapple");
-//Pizza pepperoni = new Pizza(3, "Pepperoni", 75, "Tomato, Cheese, Pepperoni");
-//Pizza spicy = new Pizza(4,"Spicy", 78,"Tomato, Cheese, Beef, Jalapeño, Crushed Chilli");
