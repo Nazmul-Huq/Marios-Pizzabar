@@ -1,4 +1,3 @@
-// VICTOR HAS MODIFIED THE SETUP OF THE CODE A LITTLE BIT, WHY IT LOOKS SLIGHTLY DIFFERENT FROM SØS' AND NAZMUL'S VERSIONS //
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -68,10 +67,8 @@ public class Customer {
 
         System.out.println("Please input a customer ID ");
         int customerId = Integer.parseInt(scanner.nextLine());
-
         System.out.println("Please enter your name ");
         String customerName = scanner.nextLine();
-
         System.out.println("now please enter your address, phone number and email-address ");
         String customerAddress = scanner.nextLine();
         int customerPhoneNumber = Integer.parseInt(scanner.nextLine());
@@ -175,7 +172,6 @@ public class Customer {
                     //Storing in the database
                     Database.customerRecords.remove(customerPhoneNumber);
                 }
-
             }
             System.out.println(customerPhoneNumber + " has now been delete from your database");
         }

@@ -1,4 +1,3 @@
-// VICTOR HAS MODIFIED THE SETUP OF THE CODE A LITTLE BIT, WHY IT LOOKS SLIGHTLY DIFFERENT FROM SØS' AND NAZMUL'S VERSIONS //
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -54,16 +53,12 @@ public class Pizza {
 
         System.out.println("Please give your new pizza a number");
         int pizzaId = Integer.parseInt(scanner.nextLine());
-
         System.out.println("What's the name of the pizza?");
         String pizzaName = scanner.nextLine();
-
         System.out.println("What is the ingredients in " + pizzaName + " ?");
         String pizzaIngredient = scanner.nextLine();
-
         System.out.println("And what should the price be?");
         int pizzaPrice = Integer.parseInt(scanner.nextLine());
-
         System.out.println("Do you want to save " + pizzaName + " to the database of pizzas?");
         String savePizzaOrNot = scanner.nextLine();
         if (savePizzaOrNot.equals("yes")) {
