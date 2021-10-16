@@ -1,3 +1,5 @@
+// VICTOR HAS MODIFIED THE SETUP OF THE CODE A LITTLE BIT, WHY IT LOOKS SLIGHTLY DIFFERENT FROM SØS' AND NAZMUL'S VERSIONS //
+
 import javax.sound.midi.Soundbank;
 import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
@@ -8,10 +10,12 @@ import java.util.*;
 
 import java.util.Scanner;
 
-public class MariosPizzabar {
+public class MariosPizzabar
+{
 
     static Scanner scanner = new Scanner(System.in);
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
 
         //written by Nazmul: will add some order to start with, so that we can operate different functions
         // deletion of this bloc  and corresponding method's information will not affect the program
@@ -132,7 +136,8 @@ public class MariosPizzabar {
      * written by Nazmul
      * method to delete an order from marios order list
      */
-    public static void deleteOrder(){
+    public static void deleteOrder()
+    {
         System.out.println("Please enter order id to delete");
         int orderIdToDelete = Integer.parseInt(scanner.nextLine());
         int indexOfGivenOrderId = getIndexFromOrderId(orderIdToDelete); // fist get the index where given order id is located/stored in "orderRecord"
@@ -145,12 +150,18 @@ public class MariosPizzabar {
      * written by Namul
      * get the index number of given order id
      */
-    public static int getIndexFromOrderId(int orderId){
+    public static int getIndexFromOrderId(int orderId)
+    {
         int indexOfGivenOrderId = -1;
-        for (int i = 0; i < Database.orderRecord.size() ; i++) {
+        for (int i = 0; i < Database.orderRecord.size() ; i++)
+        {
             Order individualOrder = Database.orderRecord.get(i);
-            int orderIdOfIndividualOrder = individualOrder.getId(); // get the id of individual order
-            if (orderIdOfIndividualOrder == orderId) { // if match with given order, so we delete that order
+
+            // get the id of individual order
+
+            int orderIdOfIndividualOrder = individualOrder.getId();
+            // if match with given order, so we delete that order
+            {
                 indexOfGivenOrderId = i;
                 break;
             }
@@ -163,25 +174,57 @@ public class MariosPizzabar {
      * written by Nazmul
      * method to create a new order and add it to both permanentOrderRecord and orderRecord
      */
-    public static void createAndAddNewOrder(){
-        int id = getNewOrderId(); // generate an order id automatically
-        ArrayList<Integer> pizzaIds = new ArrayList<>(); // start array list for pizza ids
-        ArrayList<String> pizzaNames = new ArrayList<>(); // start array list for pizza names
-        ArrayList<Double> pizzaPrices = new ArrayList<>(); // start array list for pizza prices
-        double finalPrice = 0; // sum of all pizza price
+    public static void createAndAddNewOrder()
+    {
+        // generate an order id automatically
+        int id = getNewOrderId();
+
+        // start array list for pizza ids
+        ArrayList<Integer> pizzaIds = new ArrayList<>();
+
+        // start array list for pizza names
+        ArrayList<String> pizzaNames = new ArrayList<>();
+
+        // start array list for pizza prices
+        ArrayList<Double> pizzaPrices = new ArrayList<>();
+
+        // sum of all pizza price
+        double finalPrice = 0;
+
         // start while loop to get input during order of 1 or 2 or 3 or more pizzas
-        while (true){
+        while (true)
+        {
             System.out.println("Please enter Pizza id to add in the order");
+
             int pizzaId = Integer.parseInt(scanner.nextLine());
+
+
             pizzaIds.add(pizzaId); // add given id to the pizzaIds array list
+
+
             String pizzaName = getPizzaName(pizzaId); // check and get pizza name from "pizzaDetail"
+
+
             pizzaNames.add(pizzaName); // add pizza name to pizzaNames array list
+
+
             double pizzaPrice = getPizzaPrice(pizzaId); // check and get pizza price from "pizzaDetail"
+
+
             pizzaPrices.add(pizzaPrice); // add pizza price to pizzaPrice array list
+
+
             finalPrice = finalPrice + pizzaPrice; // add pizza price to final price
+
+
             System.out.println("Enter 'c' to add more pizza, or 'q' to finish adding pizza");
+
+
             String continueOrQuit = scanner.nextLine();
-            if (continueOrQuit.equals("q")) {
+
+
+            if (continueOrQuit.equals("q"))
+            {
                 break;
             }
         }
@@ -189,8 +232,11 @@ public class MariosPizzabar {
         Date orderDate = new Date(); // order date is always todays date
         LocalTime deliveryTime = getDeliveryTime(); // ask and get the delivery time
 
-        int customerId = getCustomerId(); // get customer id
-        if (customerId == 0) { // customer could not be found in the database
+        // get customer id
+        int customerId = getCustomerId();
+
+        // customer could not be found in the database
+        if (customerId == 0) {
             System.out.println("Customer do not exist. Please create a new customer");
             // ask to make new customer
 
@@ -200,7 +246,9 @@ public class MariosPizzabar {
 
         // Finally make the new order and add to the database
         Order newOrder = new Order(id, customerId, pizzaIds,   pizzaNames, pizzaPrices, orderDate, finalPrice, deliveryTime);
+
         newOrder.addOrder(newOrder);
+
         System.out.println("Following order has been added successfully");
         System.out.println(newOrder);
         System.out.println("Order list for mario is been updated as follows");
@@ -213,13 +261,18 @@ public class MariosPizzabar {
      * get the delivery time, if user like to pick now then set the current date and time as delivery time
      * may be this can be done in an easy way but i can't find it
      */
-    public static LocalTime getDeliveryTime(){
-        LocalTime deliveryTime = LocalTime.now(); // get the current local time
+    public static LocalTime getDeliveryTime()
+    {
+        // get the current local time
+        LocalTime deliveryTime = LocalTime.now();
         System.out.println("Do you like to pick now or later. Enter 'n' for now, 'l' for later");
         String deliveryNowOrLater = (scanner.nextLine()).toLowerCase(Locale.ROOT);
+
         // if 'n' is entered then we do not change deliveryTime is same as current local time and we do nothing
         // if 'l' is entered then ask for time and set deliveryTime to given time
-        if (deliveryNowOrLater.equals("l")) { // means delivery not now
+        if (deliveryNowOrLater.equals("l"))
+        {
+            // means delivery not now
             System.out.println("when do you like to pick?");
             System.out.println("Please Enter only hour fx, 13 or 20 ");
             int  deliveryTimeHour = Integer.parseInt(scanner.nextLine());
@@ -236,12 +289,16 @@ public class MariosPizzabar {
      * method will get a pizza id, will find that id record in database, get pizza price for that id, finally return it
      * for a detail explanation of how this method work see method "getCustomerIdFromDatabase"
      */
-    public static double getPizzaPrice(int pizzaId){
+    public static double getPizzaPrice(int pizzaId)
+    {
         double pizzaPrice = 0.0;
-        for (int i = 0; i < Database.pizzaDetail.size(); i++) {
+        for (int i = 0; i < Database.pizzaDetail.size(); i++)
+        {
             Pizza individualPizza = Database.pizzaDetail.get(i);
             int pizzaIdFromDatabase = individualPizza.getPizzaId();
-            if (pizzaIdFromDatabase == pizzaId) {
+
+            if (pizzaIdFromDatabase == pizzaId)
+            {
                 pizzaPrice = individualPizza.getPizzaPrice();
             }
         }
@@ -253,12 +310,17 @@ public class MariosPizzabar {
      * method will get a pizza id, will find that id record in database, get pizza name for that id, finally return it
      * for a detail explanation of how this method work see method "getCustomerIdFromDatabase"
      */
-    public static String getPizzaName(int pizzaId){
+    public static String getPizzaName(int pizzaId)
+    {
         String pizzaName = "";
-        for (int i = 0; i < Database.pizzaDetail.size(); i++) {
+
+        for (int i = 0; i < Database.pizzaDetail.size(); i++)
+        {
             Pizza individualPizza = Database.pizzaDetail.get(i);
             int pizzaIdFromDatabase = individualPizza.getPizzaId();
-            if (pizzaIdFromDatabase == pizzaId) {
+
+            if (pizzaIdFromDatabase == pizzaId)
+            {
                 pizzaName = individualPizza.getPizzaName();
             }
         }
@@ -271,16 +333,26 @@ public class MariosPizzabar {
      * if customer id provided  it will check if customer id exist or not in "customerRecords. If not will return 0
      * if phone number is provided then will check and get the id number from "customerRecords". If can not found then will return 0
      */
-    public static int getCustomerId(){
-        int customerId = 0; // first set customer id to 0
+    public static int getCustomerId()
+    {
+        // first set customer id to 0
+        int customerId = 0;
         System.out.println("What is customer id? type exit if you do not know");
-        String customerIdOrExit = scanner.nextLine(); // get the input from user
-        if (customerIdOrExit.equals("exit")) { // if exit is typed then ask for phone number
+
+        // get the input from user
+        String customerIdOrExit = scanner.nextLine();
+
+        // if exit is typed then ask for phone number
+        if (customerIdOrExit.equals("exit"))
+        {
             System.out.println("Enter phone number to find the customer id");
             int customersPhone = Integer.parseInt(scanner.nextLine()); // get the phone number
             customerId = getCustomerIdFromDatabase(customersPhone); // check and get customer id using phone number
-        } else { // if customer id is given
-            customerId = Integer.parseInt(customerIdOrExit); // we set given customer id to our "customerId" variable
+        }
+        else
+        {
+            // if customer id is given we set given customer id to our "customerId" variable
+            customerId = Integer.parseInt(customerIdOrExit);
         }
         return customerId;
     }
@@ -291,7 +363,8 @@ public class MariosPizzabar {
      * method will get customers phone number as parameter and check in database if phone no exist or not
      * if found will return the customer's id number, if not will return 0
      */
-    public static int getCustomerIdFromDatabase(int customersPhone){
+    public static int getCustomerIdFromDatabase(int customersPhone)
+    {
         int customerId = 0; // first set customer id to 0
         for (int i = 0; i < Database.customerRecords.size(); i++) {
             Customer individualCustomer = Database.customerRecords.get(i); // make a Customer for each record

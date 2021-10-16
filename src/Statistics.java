@@ -196,10 +196,5 @@ public class Statistics
                 System.out.println("Least selling pizza is Beef Pizza, sell unit: " + leastSellingPizza);
                 break;
         }
-
-
-
-        // Remember to make it break automatically, if 5 pizzas are selected
-
     }
 }
